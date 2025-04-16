@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SVG Toggle Menu</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Montserrat", sans-serif;
+      }
+
+      .container {
+        position: relative;
+      }
+
+      .main {
+        display: flex;
+        justify-content: center;
+        position: relative;
+        height: 500px;
+        overflow: hidden;
+      }
+
+      .main img {
+        position: absolute;
+        top: 0;
+        width: 1150px;
+        z-index: -1;
+      }
+
+      nav {
+        position: relative;
+        width: 100%;
+        height: 20px;
+        margin-top: 50px;
+        margin-right: 50px;
+        z-index: 1;
+      }
+
+      .nav-list {
+        list-style: none;
+        display: flex;
+        justify-content: flex-end;
+        gap: 30px;
+        margin-right: 50px;
+      }
+
+      .nav-list li a {
+        text-decoration: none;
+        color: rgb(0, 0, 0);
+        font-size: 18px;
+        font-weight: 500;
+        transition: color 0.3s ease;
+      }
+
+      .nav-list li a:hover {
+        color: #f0f0f0;
+      }
+
+      .center-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        text-align: center;
+        z-index: 2;
+      }
+
+      .center-text h1 {
+        font-family: "Pacifico", cursive;
+        font-size: 35px;
+        font-weight: bold;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+      }
+
+      .center-text p {
+        font-size: 17px;
+      }
+
+      /* SVG icon button */
+      .menu-icon {
+        display: none;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        z-index: 5;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+      }
+
+      .menu-icon img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        transition: opacity 0.3s ease;
+      }
+
+      /* Fullscreen Sidebar */
+      .sidebar {
+        position: fixed;
+        top: 60px; /* below the icon */
+        left: 0;
+        width: 100%;
+        height: calc(100% - 60px);
+        background-color: white;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        z-index: 4;
+        padding: 40px 20px;
+      }
+
+      .sidebar.active {
+        transform: translateX(0);
+      }
+
+      .sidebar ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .sidebar ul li a {
+        text-decoration: none;
+        color: black;
+        font-size: 20px;
+        font-weight: 600;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        nav {
+          display: none;
+        }
+
+        .menu-icon {
+          display: block;
+        }
+      }
+
+      .sub-main {
+        padding: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="main">
+        <nav>
+          <ul class="nav-list">
+            <li><a href="#">TOP</a></li>
+            <li><a href="#">VISION</a></li>
+            <li><a href="#">MESSAGE</a></li>
+            <li><a href="#">SERVICE</a></li>
+            <li><a href="#">STORY</a></li>
+            <li><a href="#">SERVICE</a></li>
+          </ul>
+        </nav>
+
+        <!-- SVG Icon Toggle -->
+        <div class="menu-icon" id="menuToggle">
+          <img id="menuIcon" src="/icons/menu.svg" alt="menu icon" />
+        </div>
+
+        <!-- Fullscreen Sidebar -->
+        <div class="sidebar" id="sidebar">
+          <ul>
+            <li><a href="#">TOP</a></li>
+            <li><a href="#">VISION</a></li>
+            <li><a href="#">MESSAGE</a></li>
+            <li><a href="#">SERVICE</a></li>
+            <li><a href="#">STORY</a></li>
+          </ul>
+        </div>
+
+        <img src="/img/mainImg.jpg" alt="background image" />
+        <div class="center-text">
+          <h1>Vestibulum mauris</h1>
+          <p>最新技術と自然との調和を目指す</p>
+        </div>
+      </div>
+
+      <div class="sub-main">Something</div>
+    </div>
+
+    <script>
+      const menuToggle = document.getElementById("menuToggle");
+      const menuIcon = document.getElementById("menuIcon");
+      const sidebar = document.getElementById("sidebar");
+
+      let isOpen = false;
+
+      menuToggle.addEventListener("click", () => {
+        isOpen = !isOpen;
+        sidebar.classList.toggle("active");
+        menuIcon.src = isOpen ? "/icons/close.svg" : "/icons/menu.svg";
+      });
+    </script>
+  </body>
+</html>

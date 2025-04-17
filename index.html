@@ -151,9 +151,52 @@
           display: block;
         }
       }
-
       .sub-main {
-        padding: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 50px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        gap: 30px;
+      }
+      .sub-main h1 {
+        font-weight: 500;
+        font-size: 25px;
+        text-align: center;
+      }
+      .sub-main p {
+        font-size: 14px;
+        text-align: left;
+      }
+      .message-section {
+        display: flex;
+        width: 100%;
+      }
+      .m-left {
+        flex: 1;
+      }
+      .m-left img {
+        width: 100%;
+        height: 80%;
+        object-fit: cover;
+      }
+      .m-right {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        gap: 30px;
+        background: #dfdfdf;
+      }
+      .m-right h1 {
+        font-weight: 500;
+        font-size: 25px;
+        text-align: center;
+      }
+      .m-right p {
+        font-size: 14px;
+        text-align: left;
       }
     </style>
   </head>
@@ -193,8 +236,34 @@
           <p>最新技術と自然との調和を目指す</p>
         </div>
       </div>
-
-      <div class="sub-main">Something</div>
+      <div class="sub-main">
+        <h1>VISION</h1>
+        <p>
+          ちかごろ世間で日本歴史の科学的研究ということがしきりに叫ばれている。科学的研究というのが近代私学の学問的方法による研究という意義であるならば、これは史学の学徒の間に老いては一般に行われていることであるから、今更こと新しくいうには及ばないはずである。上に行ったような事柄については、曖昧な態度をとり、または真実でない知識を強いて注入していたことも、明らかな事実である。
+        </p>
+      </div>
+      <div class="message-section">
+        <div class="m-left">
+          <img src="/img/sec02_01.jpg" alt="message image" />
+        </div>
+        <div class="m-right">
+          <h1>MESSAGE</h1>
+          <p>
+            ちかごろ世間で日本歴史の科学的研究ということがしきりに叫ばれている。科学的研究というのが近代私学の学問的方法による研究という意義であるならば、これは史学の学徒の間に老いては一般に行われていることであるから、今更こと新しくいう。
+          </p>
+        </div>
+      </div>
+      <div class="message-section">
+        <div class="m-right">
+          <h1>MESSAGE</h1>
+          <p>
+            ちかごろ世間で日本歴史の科学的研究ということがしきりに叫ばれている。科学的研究というのが近代私学の学問的方法による研究という意義であるならば、これは史学の学徒の間に老いては一般に行われていることであるから、今更こと新しくいう。
+          </p>
+        </div>
+        <div class="m-left">
+          <img src="/img/sec02_02.jpg" alt="message image" />
+        </div>
+      </div>
     </div>
 
     <script>

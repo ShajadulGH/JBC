@@ -3,237 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SVG Toggle Menu</title>
+    <title>JB Connect Test</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Pacifico&display=swap"
       rel="stylesheet"
     />
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      body {
-        font-family: "Montserrat", sans-serif;
-      }
-
-      .container {
-        position: relative;
-      }
-
-      .main {
-        display: flex;
-        justify-content: center;
-        position: relative;
-        height: 500px;
-        overflow: hidden;
-      }
-
-      .main img {
-        position: absolute;
-        top: 0;
-        width: 1150px;
-        z-index: -1;
-      }
-
-      nav {
-        position: relative;
-        width: 100%;
-        height: 20px;
-        margin-top: 50px;
-        margin-right: 50px;
-        z-index: 1;
-      }
-
-      .nav-list {
-        list-style: none;
-        display: flex;
-        justify-content: flex-end;
-        gap: 30px;
-        margin-right: 50px;
-      }
-
-      .nav-list li a {
-        text-decoration: none;
-        color: rgb(0, 0, 0);
-        font-size: 18px;
-        font-weight: 500;
-        transition: color 0.3s ease;
-      }
-
-      .nav-list li a:hover {
-        color: #f0f0f0;
-      }
-
-      .center-text {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        color: white;
-        text-align: center;
-        z-index: 2;
-      }
-
-      .center-text h1 {
-        font-family: "Pacifico", cursive;
-        font-size: 35px;
-        font-weight: bold;
-        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
-      }
-
-      .center-text p {
-        font-size: 17px;
-      }
-
-      /* SVG icon button */
-      .menu-icon {
-        display: none;
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        z-index: 5;
-        width: 30px;
-        height: 30px;
-        cursor: pointer;
-      }
-
-      .menu-icon img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-        transition: opacity 0.3s ease;
-      }
-
-      /* Fullscreen Sidebar */
-      .sidebar {
-        position: fixed;
-        top: 60px; /* below the icon */
-        left: 0;
-        width: 100%;
-        height: calc(100% - 60px);
-        background-color: white;
-        transform: translateX(-100%);
-        transition: transform 0.3s ease;
-        z-index: 4;
-        padding: 40px 20px;
-      }
-
-      .sidebar.active {
-        transform: translateX(0);
-      }
-
-      .sidebar ul {
-        list-style: none;
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-      }
-
-      .sidebar ul li a {
-        text-decoration: none;
-        color: black;
-        font-size: 20px;
-        font-weight: 600;
-      }
-
-      /* Responsive */
-      @media (max-width: 768px) {
-        nav {
-          display: none;
-        }
-
-        .menu-icon {
-          display: block;
-        }
-      }
-      .sub-main {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 50px;
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        gap: 30px;
-      }
-      .sub-main h1 {
-        font-weight: 500;
-        font-size: 25px;
-        text-align: center;
-      }
-      .sub-main p {
-        font-size: 14px;
-        text-align: left;
-      }
-      .message-section {
-        display: flex;
-        width: 100%;
-      }
-      .m-left {
-        flex: 1;
-      }
-      .m-left img {
-        width: 100%;
-        height: 80%;
-        object-fit: cover;
-      }
-      .m-right {
-        flex: 1;
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        gap: 30px;
-        background: #dfdfdf;
-      }
-      .m-right h1 {
-        font-weight: 500;
-        font-size: 25px;
-        text-align: center;
-      }
-      .m-right p {
-        font-size: 14px;
-        text-align: left;
-      }
-
-      .message-grid {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        width: 100%;
-        gap: 20px;
-        margin-top: 50px;
-      }
-      .grid-col {
-        display: flex;
-        flex-direction: column;
-        /* justify-content: center; */
-        align-items: center;
-        gap: 20px;
-        width: 20%;
-      }
-      .grid-col img {
-        width: 80%;
-        height: 80%;
-        object-fit: cover;
-      }
-      .grid-col h1 {
-        font-weight: 500;
-        font-size: 25px;
-        text-align: center;
-      }
-      .grid-col p {
-        font-size: 14px;
-        text-align: left;
-      }
-    </style>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="container">
+      <!-- Main Section -->
       <div class="main">
+        <!-- Nav -->
         <nav>
           <ul class="nav-list">
             <li><a href="#">TOP</a></li>
@@ -245,19 +28,90 @@
           </ul>
         </nav>
 
-        <!-- SVG Icon Toggle -->
         <div class="menu-icon" id="menuToggle">
           <img id="menuIcon" src="/icons/menu.svg" alt="menu icon" />
         </div>
-
-        <!-- Fullscreen Sidebar -->
+        <!-- Sidebar -->
         <div class="sidebar" id="sidebar">
           <ul>
-            <li><a href="#">TOP</a></li>
-            <li><a href="#">VISION</a></li>
-            <li><a href="#">MESSAGE</a></li>
-            <li><a href="#">SERVICE</a></li>
-            <li><a href="#">STORY</a></li>
+            <li>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="20px"
+                viewBox="0 -960 960 960"
+                width="20px"
+                fill="black"
+              >
+                <path
+                  d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z"
+                /></svg
+              ><a href="#">TOP</a>
+            </li>
+            <li>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="20px"
+                viewBox="0 -960 960 960"
+                width="20px"
+                fill="black"
+              >
+                <path
+                  d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z"
+                /></svg
+              ><a href="#">VISION</a>
+            </li>
+            <li>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="20px"
+                viewBox="0 -960 960 960"
+                width="20px"
+                fill="black"
+              >
+                <path
+                  d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z"
+                /></svg
+              ><a href="#">MESSAGE</a>
+            </li>
+            <li>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="20px"
+                viewBox="0 -960 960 960"
+                width="20px"
+                fill="black"
+              >
+                <path
+                  d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z"
+                /></svg
+              ><a href="#">SERVICE</a>
+            </li>
+            <li>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="20px"
+                viewBox="0 -960 960 960"
+                width="20px"
+                fill="black"
+              >
+                <path
+                  d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z"
+                /></svg
+              ><a href="#">STORY</a>
+            </li>
+            <li>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="20px"
+                viewBox="0 -960 960 960"
+                width="20px"
+                fill="black"
+              >
+                <path
+                  d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z"
+                /></svg
+              ><a href="#">SERVICE</a>
+            </li>
           </ul>
         </div>
 
@@ -267,12 +121,14 @@
           <p>最新技術と自然との調和を目指す</p>
         </div>
       </div>
+      <!-- Sub Main -->
       <div class="sub-main">
         <h1>VISION</h1>
         <p>
-          ちかごろ世間で日本歴史の科学的研究ということがしきりに叫ばれている。科学的研究というのが近代私学の学問的方法による研究という意義であるならば、これは史学の学徒の間に老いては一般に行われていることであるから、今更こと新しくいうには及ばないはずである。上に行ったような事柄については、曖昧な態度をとり、または真実でない知識を強いて注入していたことも、明らかな事実である。
+          ちかごろ世間で日本歴史の科学的研究ということがしきりに叫ばれている。科学的研究というのが近代私学の学問的方法による研究という意義であるならば、これは史学の学徒の間に老いては一般に行われていることであるから、今更こと新しくいうには及ばないはずである。
         </p>
       </div>
+      <!-- Message Section -->
       <div class="message-section">
         <div class="m-left">
           <img src="/img/sec02_01.jpg" alt="message image" />
@@ -284,6 +140,7 @@
           </p>
         </div>
       </div>
+      <!-- Message Section Inversed -->
       <div class="message-section">
         <div class="m-right">
           <h1>MESSAGE</h1>
@@ -295,29 +152,119 @@
           <img src="/img/sec02_02.jpg" alt="message image" />
         </div>
       </div>
+      <!-- Message Grid Section -->
       <div class="message-grid">
         <div class="grid-col">
-          <h1>SERVISE</h1>
-          <img src="/img/circleImg01.png" alt="" />
+          <h1>SERVICE</h1>
+          <img src="/img/circleImg01.png" alt="service" />
           <p>
             科学的研究というのが近代私学の学問的方法による研究という意義であるならば、これは史学の学徒の間に老いては一般に行われていることであるから、今更こと新しくいう。
           </p>
         </div>
         <div class="grid-col">
           <h1>MESSAGE</h1>
-          <img src="/img/circleImg02.png" alt="" />
+          <img src="/img/circleImg02.png" alt="message" />
           <p>
             科学的研究というのが近代私学の学問的方法による研究という意義であるならば、これは史学の学徒の間に老いては一般に行われていることであるから、今更こと新しくいうには及ばないはずである。
           </p>
         </div>
         <div class="grid-col">
           <h1>STORY</h1>
-          <img src="/img/circleImg03.png" alt="" />
+          <img src="/img/circleImg03.png" alt="story" />
           <p>
             科学的研究というのが近代私学の学問的方法による研究という意義であるならば、これは史学の学徒の間に老いては一般に行われていることであるから、今更こと新しくいうには及ばないはずである。
           </p>
         </div>
       </div>
+      <!-- Box Frame Section -->
+      <div class="box-container">
+        <div class="box">
+          <div class="flag-shadow"></div>
+          <div class="flag">01</div>
+          <div class="border-box">REASON</div>
+          <h2>歴史と実績</h2>
+          <div class="box-section">
+            <div class="box-image">
+              <img src="/img/reason.jpg" alt="歴史と実績" />
+            </div>
+            <div class="box-text">
+              <p>
+                昭和10年に長浜市で創業して以来、水まわりなどの小さいリフォームから住宅・店舗の設計施工、公共建築物等の大規模な建築まで、滋賀県に住む皆様のために多くのサポートをして参りました。<br />
+                長年地元のお客様と共に歩んできた歴史と実績は、何物にも代えがたいノブワークスの財産です。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Story Section -->
+      <div class="story-section">
+        <div class="story-col">
+          <h1>MESSAGE</h1>
+          <p>
+            科学的研究というのが近代私学の学問的方法による研究という意義であるならば、これは史学の学徒の間に老いては一般に行われていることであるから、今更こと新しくいうには及ばないはずである。
+          </p>
+        </div>
+        <div class="story-col">
+          <h1>MESSAGE</h1>
+          <p>
+            科学的研究というのが近代私学の学問的方法による研究という意義であるならば、これは史学の学徒の間に老いては一般に行われていることであるから、今更こと新しくいうには及ばないはずである。
+          </p>
+        </div>
+      </div>
+      <!-- Address Section -->
+      <div class="address-section">
+        <div class="info-col">
+          <div class="info-row">
+            <span class="label">社名</span
+            ><span class="value">Sample Company</span>
+          </div>
+          <div class="info-row">
+            <span class="label">代表取締役</span
+            ><span class="value">見牛 太郎</span>
+          </div>
+          <div class="info-row">
+            <span class="label">住所</span
+            ><span class="value">見牛県見牛市見牛1-3-5</span>
+          </div>
+          <div class="info-row">
+            <span class="label">電話番号</span
+            ><span class="value">01234-567-8901</span>
+          </div>
+          <div class="info-row">
+            <span class="label">設立</span
+            ><span class="value">20XX年5月5日</span>
+          </div>
+          <div class="info-row">
+            <span class="label">資本金</span
+            ><span class="value">1,000,000円</span>
+          </div>
+          <div class="info-row">
+            <span class="label">資本金</span
+            ><span class="value">1,000,000円</span>
+          </div>
+          <div class="info-row">
+            <span class="label">主要取引先</span>
+            <span class="value value-li"
+              >牛商事株式会社 <br />株式会社見牛生産所 <br />
+              株式会社見牛設計事務所
+            </span>
+          </div>
+        </div>
+        <div class="map-col">
+          <iframe
+            src="https://maps.google.com/maps?q=富士駅&output=embed"
+            allowfullscreen
+          >
+          </iframe>
+        </div>
+      </div>
+      <!-- Footer Section -->
+      <footer>
+        <p>
+          Copyrisht &copy; 2025 Jb Connect Ltd. All Right Reserved. Designed By
+          Shajadul Karim Bhuiyan
+        </p>
+      </footer>
     </div>
 
     <script>
